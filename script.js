@@ -1,25 +1,12 @@
 // ══════════════════════════════════════════════
 // ASSET LOADER
-// Tries each extension in order and loads the
-// first one that exists from the assets/ folder.
-//
-// Expected file names:
-//   assets/profile.jpg   (or .png / .webp)
-//   assets/cv.pdf
-//   assets/project1.jpg  (or .png / .webp)
-//   assets/project2.jpg  (or .png / .webp)
-//   assets/project3.jpg  (or .png / .webp)
 // ══════════════════════════════════════════════
 
-// Probe a URL — resolves true if the server
-// returns a non-404 response (no data downloaded).
 const probeAsset = (url) =>
   fetch(url, { method: 'HEAD' })
     .then(r => r.ok)
     .catch(() => false);
 
-// Try each extension in sequence; return the
-// first URL that resolves, or null if none found.
 const resolveAsset = async (baseName, exts) => {
   for (const ext of exts) {
     const url = `assets/${baseName}.${ext}`;
@@ -42,7 +29,6 @@ const loadProfile = async () => {
       fallback.classList.add('hidden');
     };
   }
-  // If no file found, fallback "DY" stays visible automatically
 };
 
 // ── CV download link ───────────────────────────
@@ -54,7 +40,6 @@ const loadCV = async () => {
   if (exists) {
     link.href = 'assets/cv.pdf';
   } else {
-    // Dim the button subtly to signal the file isn't there yet
     link.style.opacity = '0.45';
     link.title = 'CV not found — add assets/cv.pdf';
     link.removeAttribute('download');
@@ -62,22 +47,138 @@ const loadCV = async () => {
   }
 };
 
-// ── Project images ─────────────────────────────
-const loadProjectImages = async () => {
-  const imgs = document.querySelectorAll('img[data-asset]');
-  await Promise.all([...imgs].map(async (img) => {
-    const baseName = img.dataset.asset;
-    const placeholder = img.nextElementSibling; // .p-img-placeholder
+// ── Carousel project images ────────────────────
+const loadCarouselImages = async () => {
+  const slides = document.querySelectorAll('.carousel-slide[data-asset]');
+  await Promise.all([...slides].map(async (slide) => {
+    const baseName = slide.dataset.asset;
+    const img = slide.querySelector('.p-img');
+    const placeholder = slide.querySelector('.p-img-placeholder');
     const url = await resolveAsset(baseName, ['jpg', 'jpeg', 'png', 'webp']);
-    if (url) {
+    if (url && img) {
       img.src = url;
       img.onload = () => {
         img.classList.add('loaded');
         if (placeholder) placeholder.classList.add('hidden');
       };
     }
-    // If no file found, placeholder text stays visible
   }));
+};
+
+// ══════════════════════════════════════════════
+// CAROUSEL LOGIC
+// click once → start auto-sliding every 1.5s
+// double-click → pause/freeze on current slide
+// ══════════════════════════════════════════════
+const initCarousels = () => {
+  const carousels = document.querySelectorAll('.p-carousel');
+
+  carousels.forEach(carousel => {
+    const projectId = carousel.dataset.project;
+    const track = document.getElementById(`carousel-${projectId}`);
+    const hint = document.getElementById(`hint-${projectId}`);
+    const status = document.getElementById(`status-${projectId}`);
+    const dotsContainer = document.getElementById(`dots-${projectId}`);
+    const dots = dotsContainer ? [...dotsContainer.querySelectorAll('.dot')] : [];
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    const total = slides.length;
+
+    let currentIdx = 0;
+    let intervalId = null;
+    let isRunning = false;
+    let isPaused = false;
+    let clickTimer = null;
+
+    const goTo = (idx) => {
+      currentIdx = (idx + total) % total;
+      track.style.transform = `translateX(-${currentIdx * (100 / total)}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === currentIdx));
+    };
+
+    const startSliding = () => {
+      if (intervalId) clearInterval(intervalId);
+      isRunning = true;
+      isPaused = false;
+      hint.classList.add('hidden');
+      status.textContent = '▶ playing';
+      status.classList.add('visible');
+      intervalId = setInterval(() => {
+        goTo(currentIdx + 1);
+      }, 1500);
+    };
+
+    const pauseSliding = () => {
+      if (intervalId) clearInterval(intervalId);
+      intervalId = null;
+      isRunning = false;
+      isPaused = true;
+      status.textContent = '⏸ paused';
+      status.classList.add('visible');
+      // Auto-hide status after 2s
+      setTimeout(() => { if (isPaused) status.classList.remove('visible'); }, 2000);
+    };
+
+    // Single click → start; if already running, advance one step
+    // Double click → pause
+    carousel.addEventListener('click', (e) => {
+      // debounce double-click
+      if (clickTimer) {
+        // second click = double-click
+        clearTimeout(clickTimer);
+        clickTimer = null;
+        if (isRunning) {
+          pauseSliding();
+        }
+        return;
+      }
+
+      clickTimer = setTimeout(() => {
+        clickTimer = null;
+        if (!isRunning) {
+          startSliding();
+        } else {
+          // single click while running → advance manually
+          goTo(currentIdx + 1);
+        }
+      }, 220);
+    });
+
+    // Also open lightbox on double-click if image is loaded
+    carousel.addEventListener('dblclick', (e) => {
+      const activeSlide = slides[currentIdx];
+      const img = activeSlide.querySelector('.p-img.loaded');
+      if (img) {
+        openLightbox(img.src, img.alt);
+      }
+    });
+  });
+};
+
+// ══════════════════════════════════════════════
+// LIGHTBOX
+// ══════════════════════════════════════════════
+const openLightbox = (src, caption) => {
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lb-img');
+  const lbCaption = document.getElementById('lb-caption');
+  lbImg.src = src;
+  lbCaption.textContent = caption || '';
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+};
+
+const closeLightbox = () => {
+  const lb = document.getElementById('lightbox');
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+};
+
+const initLightbox = () => {
+  const overlay = document.getElementById('lb-overlay');
+  const closeBtn = document.getElementById('lb-close');
+  if (overlay) overlay.addEventListener('click', closeLightbox);
+  if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
 };
 
 // ══════════════════════════════════════════════
@@ -181,13 +282,15 @@ const fn_f = () => {
 };
 
 // ══════════════════════════════════════════════
-// INIT — run everything on DOM ready
+// INIT
 // ══════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded', () => {
-  // Asset loading runs in parallel — no blocking
   loadProfile();
   loadCV();
-  loadProjectImages();
+  loadCarouselImages();
+
+  initCarousels();
+  initLightbox();
 
   fn_t();
   fn_m();
