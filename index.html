@@ -9,6 +9,9 @@
 </head>
 <body id="b">
 
+  <!-- iOS-style extra blob -->
+  <div class="blob3"></div>
+
   <nav id="n0" class="gl">
     <ul class="nl">
       <li><a href="#s2">About</a></li>
@@ -27,13 +30,11 @@
       <h2 class="ty">I'm a <span id="t-eff" class="ac"></span><span class="cs">|</span></h2>
       <p class="bio">Passionate Computer Science & Engineering student specializing in algorithmic optimization, software development, and machine learning.</p>
       <div class="btn-g">
-        <!-- CV auto-resolved from assets/cv.pdf by script.js -->
         <a href="#" id="cv-link" class="b1" download="Deekshitha_CV.pdf">Download CV</a>
         <a href="https://github.com/deekshitha" target="_blank" class="b2">GitHub</a>
       </div>
     </div>
     <div class="h-img gl">
-      <!-- Profile image auto-resolved from assets/profile.* by script.js -->
       <img id="profile-img" src="" alt="Deekshitha Yekkaluri" class="profile-img">
       <div class="img-fallback" id="img-fallback">DY</div>
     </div>
@@ -41,7 +42,7 @@
 
   <!-- ABOUT -->
   <section id="s2">
-    <h2 class="sh ac">About Me</h2>
+    <h2 class="sh">About <span class="ac">Me</span></h2>
     <div class="a-w">
       <div class="a-txt gl">
         <div class="a-intro">
@@ -85,23 +86,91 @@
 
   <!-- SKILLS -->
   <section id="s3">
-    <h2 class="sh ac">Skills</h2>
+    <h2 class="sh">Technical <span class="ac">Skills</span></h2>
     <div class="sk-g">
-      <div class="sk-cd gl"><h3>Languages</h3><p>Python, C++, C, Java</p></div>
-      <div class="sk-cd gl"><h3>Frameworks & ML</h3><p>HTML, CSS, JavaScript, Scikit-learn</p></div>
-      <div class="sk-cd gl"><h3>Tools</h3><p>Figma, VS Code, Git, GitHub</p></div>
-      <div class="sk-cd gl"><h3>Soft Skills</h3><p>Problem-Solving, Adaptability, Time Mgmt</p></div>
+
+      <div class="sk-cd gl">
+        <div class="sk-icon">⌨️</div>
+        <span class="sk-cat">Programming Languages</span>
+        <div class="sk-pills">
+          <span class="sk-pill">Python</span>
+          <span class="sk-pill">C++</span>
+          <span class="sk-pill">C</span>
+          <span class="sk-pill">Java</span>
+          <span class="sk-pill">JavaScript</span>
+        </div>
+      </div>
+
+      <div class="sk-cd gl">
+        <div class="sk-icon">🤖</div>
+        <span class="sk-cat">AI & Machine Learning</span>
+        <div class="sk-pills">
+          <span class="sk-pill">Scikit-learn</span>
+          <span class="sk-pill">NumPy</span>
+          <span class="sk-pill">Pandas</span>
+          <span class="sk-pill">Genetic Algorithms</span>
+          <span class="sk-pill">ML Fundamentals</span>
+        </div>
+      </div>
+
+      <div class="sk-cd gl">
+        <div class="sk-icon">🌐</div>
+        <span class="sk-cat">Web Development</span>
+        <div class="sk-pills">
+          <span class="sk-pill">HTML5</span>
+          <span class="sk-pill">CSS3</span>
+          <span class="sk-pill">JavaScript</span>
+          <span class="sk-pill">Responsive Design</span>
+          <span class="sk-pill">UI/UX Basics</span>
+        </div>
+      </div>
+
+      <div class="sk-cd gl">
+        <div class="sk-icon">🛠️</div>
+        <span class="sk-cat">Frameworks & Tools</span>
+        <div class="sk-pills">
+          <span class="sk-pill">Figma</span>
+          <span class="sk-pill">VS Code</span>
+          <span class="sk-pill">Git</span>
+          <span class="sk-pill">GitHub</span>
+          <span class="sk-pill">Tkinter</span>
+        </div>
+      </div>
+
+      <div class="sk-cd gl">
+        <div class="sk-icon">🧱</div>
+        <span class="sk-cat">CS Fundamentals</span>
+        <div class="sk-pills">
+          <span class="sk-pill">Data Structures</span>
+          <span class="sk-pill">Algorithms</span>
+          <span class="sk-pill">Operating Systems</span>
+          <span class="sk-pill">DBMS</span>
+          <span class="sk-pill">Computer Networks</span>
+        </div>
+      </div>
+
+      <div class="sk-cd gl">
+        <div class="sk-icon">🤝</div>
+        <span class="sk-cat">Soft Skills</span>
+        <div class="sk-pills">
+          <span class="sk-pill">Problem Solving</span>
+          <span class="sk-pill">Adaptability</span>
+          <span class="sk-pill">Time Management</span>
+          <span class="sk-pill">Team Collaboration</span>
+          <span class="sk-pill">Critical Thinking</span>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- PROJECTS — images auto-loaded via data-asset attribute by script.js -->
+  <!-- PROJECTS -->
   <section id="s4">
-    <h2 class="sh ac">Projects</h2>
+    <h2 class="sh">My <span class="ac">Projects</span></h2>
     <div class="p-g">
 
       <div class="p-cd gl">
         <div class="p-img-wrap">
-          <!-- script.js will try: assets/project1.jpg, .png, .webp -->
           <img data-asset="project1" alt="Page Replacement Simulator" class="p-img">
           <div class="p-img-placeholder">Add assets/project1.jpg</div>
         </div>
@@ -110,12 +179,12 @@
           <h3>Page Replacement Simulator</h3>
           <p>GUI-based simulator (FIFO, LRU, Optimal) for OS memory management with real-time hit/miss detection.</p>
           <div class="tg"><span>Python</span><span>Tkinter</span><span>OS</span></div>
+          <a href="https://github.com/deekshitha" target="_blank" class="p-link">View Project</a>
         </div>
       </div>
 
       <div class="p-cd gl">
         <div class="p-img-wrap">
-          <!-- script.js will try: assets/project2.jpg, .png, .webp -->
           <img data-asset="project2" alt="Energy-Efficient GA for TSP" class="p-img">
           <div class="p-img-placeholder">Add assets/project2.jpg</div>
         </div>
@@ -124,12 +193,12 @@
           <h3>Energy-Efficient GA for TSP</h3>
           <p>Genetic Algorithm to optimize delivery drone routes incorporating battery usage and payload constraints.</p>
           <div class="tg"><span>Python</span><span>Optimization</span></div>
+          <a href="https://github.com/deekshitha" target="_blank" class="p-link">View Project</a>
         </div>
       </div>
 
       <div class="p-cd gl">
         <div class="p-img-wrap">
-          <!-- script.js will try: assets/project3.jpg, .png, .webp -->
           <img data-asset="project3" alt="Educational Web Portal" class="p-img">
           <div class="p-img-placeholder">Add assets/project3.jpg</div>
         </div>
@@ -138,6 +207,7 @@
           <h3>Educational Web Portal</h3>
           <p>Responsive educational portal focusing on UI/UX, dynamic rendering, and cross-browser support.</p>
           <div class="tg"><span>HTML</span><span>CSS</span><span>JS</span></div>
+          <a href="https://github.com/deekshitha" target="_blank" class="p-link">View Project</a>
         </div>
       </div>
 
@@ -146,18 +216,51 @@
 
   <!-- CERTIFICATES -->
   <section id="s5">
-    <h2 class="sh ac">Certificates & Training</h2>
+    <h2 class="sh">Certificates <span class="ac">& Training</span></h2>
     <div class="c-g">
-      <div class="c-cd gl"><div class="c-icon">01</div><h3>C Programming & Phone Book System</h3><span class="c-org">CSE PATHSALA</span></div>
-      <div class="c-cd gl"><div class="c-icon">02</div><h3>Java Programming</h3><span class="c-org">NeoColab</span></div>
-      <div class="c-cd gl"><div class="c-icon">03</div><h3>Bits and Bytes of Networking</h3><span class="c-org">Coursera</span></div>
-      <div class="c-cd gl"><div class="c-icon">04</div><h3>Responsive Web Design</h3><span class="c-org">FreeCodeCamp</span></div>
+
+      <div class="c-cd gl">
+        <div class="c-icon">01</div>
+        <h3>C Programming & Phone Book System</h3>
+        <span class="c-org">CSE PATHSALA</span>
+        <span class="c-year">2023</span>
+        <p class="c-desc">Learned C fundamentals including pointers, memory management, file handling, and built a functional phone book application.</p>
+        <a href="assets/cert1.pdf" target="_blank" class="c-link">View Certificate</a>
+      </div>
+
+      <div class="c-cd gl">
+        <div class="c-icon">02</div>
+        <h3>Java Programming</h3>
+        <span class="c-org">NeoColab</span>
+        <span class="c-year">2023</span>
+        <p class="c-desc">Covered core Java concepts including OOP principles, exception handling, collections, and practical application development.</p>
+        <a href="assets/cert2.pdf" target="_blank" class="c-link">View Certificate</a>
+      </div>
+
+      <div class="c-cd gl">
+        <div class="c-icon">03</div>
+        <h3>Bits and Bytes of Networking</h3>
+        <span class="c-org">Coursera</span>
+        <span class="c-year">2024</span>
+        <p class="c-desc">Explored networking fundamentals including TCP/IP, DNS, DHCP, and how data flows across the internet.</p>
+        <a href="assets/cert3.pdf" target="_blank" class="c-link">View Certificate</a>
+      </div>
+
+      <div class="c-cd gl">
+        <div class="c-icon">04</div>
+        <h3>Responsive Web Design</h3>
+        <span class="c-org">FreeCodeCamp</span>
+        <span class="c-year">2024</span>
+        <p class="c-desc">Built responsive web pages using HTML5 and CSS3, covering Flexbox, Grid, media queries, and accessibility best practices.</p>
+        <a href="assets/cert4.pdf" target="_blank" class="c-link">View Certificate</a>
+      </div>
+
     </div>
   </section>
 
   <!-- CONTACT -->
   <section id="s6">
-    <h2 class="sh ac">Contact</h2>
+    <h2 class="sh">Get In <span class="ac">Touch</span></h2>
     <div class="ct-w">
       <div class="ct-i gl">
         <div class="ct-line"><span class="ct-lbl">Email</span><a href="mailto:deekshithayekkaluri123@gmail.com" class="ct-val">deekshithayekkaluri123@gmail.com</a></div>
