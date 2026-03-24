@@ -12,11 +12,25 @@
   <!-- iOS-style extra blob -->
   <div class="blob3"></div>
 
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-overlay" id="lb-overlay"></div>
+    <div class="lightbox-content">
+      <button class="lb-close" id="lb-close">✕</button>
+      <img src="" alt="" id="lb-img" class="lb-img">
+      <div class="lb-caption" id="lb-caption"></div>
+    </div>
+  </div>
+
   <nav id="n0" class="gl">
+    <div class="nav-logo">
+      <a href="#s1" class="dy-logo">DY</a>
+    </div>
     <ul class="nl">
       <li><a href="#s2">About</a></li>
       <li><a href="#s3">Skills</a></li>
       <li><a href="#s4">Projects</a></li>
+      <li><a href="#s4a">Achievements</a></li>
       <li><a href="#s5">Certificates</a></li>
       <li><a href="#s6">Contact</a></li>
     </ul>
@@ -62,7 +76,7 @@
             <div class="tl-content">
               <span class="tl-date">Aug 2023 – Present</span>
               <h4>B.Tech in Computer Science & Engineering</h4>
-              <p>Lovely Professional University &nbsp;·&nbsp; CGPA: 6.20</p>
+              <p>Lovely Professional University &nbsp;·&nbsp; CGPA: 7.00</p>
             </div>
           </div>
           <div class="tl-item">
@@ -76,7 +90,7 @@
         </div>
         <div class="ed-g">
           <div class="cd gl"><span class="lb">Degree</span><span class="vl">B.Tech CSE</span></div>
-          <div class="cd gl"><span class="lb">CGPA</span><span class="vl">6.20</span></div>
+          <div class="cd gl"><span class="lb">CGPA</span><span class="vl">7.00</span></div>
           <div class="cd gl"><span class="lb">College</span><span class="vl">Lovely Professional University</span></div>
           <div class="cd gl"><span class="lb">Timeline</span><span class="vl">Aug 2023 – Present</span></div>
         </div>
@@ -170,9 +184,28 @@
     <div class="p-g">
 
       <div class="p-cd gl">
-        <div class="p-img-wrap">
-          <img data-asset="project1" alt="Page Replacement Simulator" class="p-img">
-          <div class="p-img-placeholder">Add assets/project1.jpg</div>
+        <div class="p-carousel" data-project="1">
+          <div class="carousel-track" id="carousel-1">
+            <div class="carousel-slide" data-asset="project1a">
+              <img src="" alt="Page Replacement Simulator - View 1" class="p-img">
+              <div class="p-img-placeholder"><span class="ph-icon">🖥️</span><span>project1a.jpg</span></div>
+            </div>
+            <div class="carousel-slide" data-asset="project1b">
+              <img src="" alt="Page Replacement Simulator - View 2" class="p-img">
+              <div class="p-img-placeholder"><span class="ph-icon">📊</span><span>project1b.jpg</span></div>
+            </div>
+            <div class="carousel-slide" data-asset="project1c">
+              <img src="" alt="Page Replacement Simulator - View 3" class="p-img">
+              <div class="p-img-placeholder"><span class="ph-icon">⚙️</span><span>project1c.jpg</span></div>
+            </div>
+          </div>
+          <div class="carousel-hint" id="hint-1">▶ Click to browse</div>
+          <div class="carousel-status" id="status-1"></div>
+          <div class="carousel-dots" id="dots-1">
+            <span class="dot active" data-idx="0"></span>
+            <span class="dot" data-idx="1"></span>
+            <span class="dot" data-idx="2"></span>
+          </div>
         </div>
         <div class="p-body">
           <span class="dt">Apr '25 – May '25</span>
@@ -184,9 +217,28 @@
       </div>
 
       <div class="p-cd gl">
-        <div class="p-img-wrap">
-          <img data-asset="project2" alt="Energy-Efficient GA for TSP" class="p-img">
-          <div class="p-img-placeholder">Add assets/project2.jpg</div>
+        <div class="p-carousel" data-project="2">
+          <div class="carousel-track" id="carousel-2">
+            <div class="carousel-slide" data-asset="project2a">
+              <img src="" alt="Energy-Efficient GA - View 1" class="p-img">
+              <div class="p-img-placeholder"><span class="ph-icon">🚁</span><span>project2a.jpg</span></div>
+            </div>
+            <div class="carousel-slide" data-asset="project2b">
+              <img src="" alt="Energy-Efficient GA - View 2" class="p-img">
+              <div class="p-img-placeholder"><span class="ph-icon">🧬</span><span>project2b.jpg</span></div>
+            </div>
+            <div class="carousel-slide" data-asset="project2c">
+              <img src="" alt="Energy-Efficient GA - View 3" class="p-img">
+              <div class="p-img-placeholder"><span class="ph-icon">📈</span><span>project2c.jpg</span></div>
+            </div>
+          </div>
+          <div class="carousel-hint" id="hint-2">▶ Click to browse</div>
+          <div class="carousel-status" id="status-2"></div>
+          <div class="carousel-dots" id="dots-2">
+            <span class="dot active" data-idx="0"></span>
+            <span class="dot" data-idx="1"></span>
+            <span class="dot" data-idx="2"></span>
+          </div>
         </div>
         <div class="p-body">
           <span class="dt">Mar '25 – Apr '25</span>
@@ -198,9 +250,28 @@
       </div>
 
       <div class="p-cd gl">
-        <div class="p-img-wrap">
-          <img data-asset="project3" alt="Educational Web Portal" class="p-img">
-          <div class="p-img-placeholder">Add assets/project3.jpg</div>
+        <div class="p-carousel" data-project="3">
+          <div class="carousel-track" id="carousel-3">
+            <div class="carousel-slide" data-asset="project3a">
+              <img src="" alt="Educational Web Portal - View 1" class="p-img">
+              <div class="p-img-placeholder"><span class="ph-icon">🌐</span><span>project3a.jpg</span></div>
+            </div>
+            <div class="carousel-slide" data-asset="project3b">
+              <img src="" alt="Educational Web Portal - View 2" class="p-img">
+              <div class="p-img-placeholder"><span class="ph-icon">📚</span><span>project3b.jpg</span></div>
+            </div>
+            <div class="carousel-slide" data-asset="project3c">
+              <img src="" alt="Educational Web Portal - View 3" class="p-img">
+              <div class="p-img-placeholder"><span class="ph-icon">🎨</span><span>project3c.jpg</span></div>
+            </div>
+          </div>
+          <div class="carousel-hint" id="hint-3">▶ Click to browse</div>
+          <div class="carousel-status" id="status-3"></div>
+          <div class="carousel-dots" id="dots-3">
+            <span class="dot active" data-idx="0"></span>
+            <span class="dot" data-idx="1"></span>
+            <span class="dot" data-idx="2"></span>
+          </div>
         </div>
         <div class="p-body">
           <span class="dt">Sep '23 – Nov '23</span>
@@ -209,6 +280,86 @@
           <div class="tg"><span>HTML</span><span>CSS</span><span>JS</span></div>
           <a href="https://github.com/deekshitha" target="_blank" class="p-link">View Project</a>
         </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section id="s4a">
+    <h2 class="sh">My <span class="ac">Achievements</span></h2>
+    <div class="ach-g">
+
+      <div class="ach-cd gl">
+        <div class="ach-icon-wrap">
+          <span class="ach-icon">🏆</span>
+        </div>
+        <div class="ach-body">
+          <span class="ach-tag">Competition</span>
+          <h3>Finalist — Microsoft Achievers Quiz</h3>
+          <p>Secured a finalist position in the Microsoft Achievers Technical Quiz, showcasing strong technical aptitude and problem-solving skills under pressure.</p>
+        </div>
+        <div class="ach-glow"></div>
+      </div>
+
+      <div class="ach-cd gl">
+        <div class="ach-icon-wrap">
+          <span class="ach-icon">💻</span>
+        </div>
+        <div class="ach-body">
+          <span class="ach-tag">Coding</span>
+          <h3>150+ LeetCode Problems Solved</h3>
+          <p>Consistently solved 150+ algorithmic problems on LeetCode, demonstrating dedication to coding proficiency and active participation in the competitive programming community.</p>
+        </div>
+        <div class="ach-glow"></div>
+      </div>
+
+      <div class="ach-cd gl">
+        <div class="ach-icon-wrap">
+          <span class="ach-icon">🎓</span>
+        </div>
+        <div class="ach-body">
+          <span class="ach-tag">Academic</span>
+          <h3>S1 Category — Lovely Professional University</h3>
+          <p>Ranked among the top 11–50% of students at LPU based on overall academic excellence and consistent performance throughout the semester.</p>
+        </div>
+        <div class="ach-glow"></div>
+      </div>
+
+      <div class="ach-cd gl">
+        <div class="ach-icon-wrap">
+          <span class="ach-icon">🥇</span>
+        </div>
+        <div class="ach-body">
+          <span class="ach-tag">Cultural</span>
+          <h3>Winner — One India Cultural Event, LPU</h3>
+          <p>Won the prestigious One India Cultural Event at LPU, collaborating with a diverse team of 60+ students representing Madhya Pradesh and showcasing strong teamwork and cultural excellence.</p>
+        </div>
+        <div class="ach-glow"></div>
+      </div>
+
+      <div class="ach-cd gl">
+        <div class="ach-icon-wrap">
+          <span class="ach-icon">🚀</span>
+        </div>
+        <div class="ach-body">
+          <span class="ach-tag">Hackathon</span>
+          <h3>Semifinalist — Smart India Hackathon 2023</h3>
+          <p>Advanced to the semifinal round of Smart India Hackathon 2023, reflecting strong academic aptitude and determination to excel in competitive national-level events.</p>
+        </div>
+        <div class="ach-glow"></div>
+      </div>
+
+      <div class="ach-cd gl">
+        <div class="ach-icon-wrap">
+          <span class="ach-icon">🎯</span>
+        </div>
+        <div class="ach-body">
+          <span class="ach-tag">Leadership</span>
+          <h3>Event Coordinator — Section of the Year</h3>
+          <p>Coordinated Section of the Year (Technical) and Mini-Spectra (Non-Technical) events, managing 50+ teams with organized planning and seamless execution.</p>
+        </div>
+        <div class="ach-glow"></div>
       </div>
 
     </div>
